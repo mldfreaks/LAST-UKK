@@ -28,7 +28,7 @@ class StudentController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'nis' => ['required', 'string', 'unique:students,nis'],
+            'nis' => ['required', 'string', 'regex:/^[0-9]+$/', 'unique:students,nis'],
             'name' => ['required', 'string', 'max:255'],
             'class' => ['required', 'string', 'max:255'],
         ]);
@@ -49,7 +49,7 @@ class StudentController extends Controller
     public function update(Request $request, Student $student): RedirectResponse
     {
         $validated = $request->validate([
-            'nis' => ['required', 'string','min:9', 'unique:students,nis,' . $student->id],
+            'nis' => ['required', 'string', 'min:9', 'regex:/^[0-9]+$/', 'unique:students,nis,' . $student->id],
             'name' => ['required', 'string', 'max:255'],
             'class' => ['required', 'string', 'max:255'],
         ]);

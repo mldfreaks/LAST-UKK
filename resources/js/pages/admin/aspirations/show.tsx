@@ -148,7 +148,7 @@ export default function Show({ aspiration }: { aspiration: Aspiration }) {
 
                             <div className="flex gap-2">
                                 <Button type="submit" disabled={processing}>
-                                    Simpan Tindak Lanjut
+                                    Simpan
                                 </Button>
                             </div>
                         </form>
