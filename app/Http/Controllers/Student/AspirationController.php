@@ -39,6 +39,10 @@ class AspirationController extends Controller
             'category_id' => ['required', 'exists:categories,id'],
             'description' => ['required', 'string', 'min:10'],
             'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
+        ], [
+            'category_id.required' => 'Kategori wajib di isi.',
+            'description.required' => 'Penjelasan / deskripsi wajib di isi.',
+            'description.min' => 'Penjelasan / deskripsi minimal 10 karakter.',
         ]);
 
         Auth::guard('student')->user()->aspirations()->create([

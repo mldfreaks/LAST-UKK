@@ -31,7 +31,15 @@ class StudentController extends Controller
             'nis' => ['required', 'string', 'regex:/^[0-9]+$/', 'unique:students,nis'],
             'name' => ['required', 'string', 'max:255'],
             'class' => ['required', 'string', 'max:255'],
-        ]);
+         ],
+
+         [ 'nis.required' => 'NIS Wajib di isi',
+           'nis.unique' => 'Nis ini sudah terdaftar',
+           'name.required' => 'Nama Wajib di isi',
+           'class.required' => 'Kelas Wajib di isi',
+
+         ]);
+
 
         Student::create($validated);
 
@@ -52,6 +60,10 @@ class StudentController extends Controller
             'nis' => ['required', 'string', 'min:9', 'regex:/^[0-9]+$/', 'unique:students,nis,' . $student->id],
             'name' => ['required', 'string', 'max:255'],
             'class' => ['required', 'string', 'max:255'],
+        ],
+        [ 'nis.required' => 'NIS Wajib di isi',
+          'nis.unique' => 'Nis ini sudah terdaftar',
+
         ]);
 
         $student->update($validated);
